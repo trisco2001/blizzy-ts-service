@@ -10,7 +10,11 @@
   "license": "ISC",
   "devDependencies": {
     "@types/aws-lambda": "^8.10.23",
+    "@types/node": "^11.11.0",
     "serverless-offline": "^4.9.2",
     "serverless-plugin-typescript": "^1.1.5"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
   }
 }
