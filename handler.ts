@@ -2,15 +2,15 @@ import { Handler, Context, Callback } from "aws-lambda";
 
 interface BasicResponse {
   statusCode: number
-  body: any
+  body: string
 }
 
 const handler: Handler = async (event: any, context: Context, callback: Callback) => {
   const response: BasicResponse = {
     statusCode: 200,
-    body: {
+    body: JSON.stringify({
       result: "OK"
-    }
+    })
   };
 
   callback(null, response)
