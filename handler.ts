@@ -1,6 +1,6 @@
 import { Handler, Context, Callback } from "aws-lambda";
-import { RequesterService } from "RequesterService";
-import { Environment } from "Environment";
+import { RequesterService } from "./RequesterService";
+import { Environment } from "./Environment";
 
 interface BasicResponse {
   statusCode: number

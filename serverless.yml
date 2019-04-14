@@ -52,7 +52,6 @@ provider:
 # you can add packaging information here
 package:
   include:
-    - handler.ts
   exclude:
     - node_modules/**
     - '!node_modules/axios/**'
@@ -71,7 +70,7 @@ functions:
     events:
       - http:
           path: service
-          method: get
+          method: post
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
