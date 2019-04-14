@@ -8,9 +8,10 @@ interface BasicResponse {
 }
 
 const handler: Handler = async (event: any, context: Context, callback: Callback) => {
-  const token = event['token'];
-  const resource = event['resource'];
-  const paramsString = event['params'];
+  const body = JSON.parse(event['body'])
+  const token = body.token;
+  const resource = body.resource;
+  const params = body.params;
   if (token === undefined) {
     const response: BasicResponse = {
       statusCode: 401,
@@ -21,17 +22,15 @@ const handler: Handler = async (event: any, context: Context, callback: Callback
     callback("No token provided", response);
   }
 
-  if (resource === undefined || paramsString === undefined) {
+  if (resource === undefined) {
     const response: BasicResponse = {
       statusCode: 400,
       body: JSON.stringify({
-        result: "No resource provided"
+        result: "No resource or params provided"
       })
     };
     callback("No resource provided", response);
   }
-
-  const params = JSON.parse(paramsString);
 
   const environment = new Environment()
   const requester = new RequesterService(environment, token);
@@ -42,8 +41,6 @@ const handler: Handler = async (event: any, context: Context, callback: Callback
   };
 
   callback(null, response)
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
 };
 
 export { handler }
