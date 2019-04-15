@@ -19,17 +19,17 @@ const handler: Handler = async (event: any, context: Context, callback: Callback
         result: "No token provided"
       })
     };
-    callback("No token provided", response);
+    return response;
   }
 
   if (resource === undefined) {
     const response: BasicResponse = {
       statusCode: 400,
       body: JSON.stringify({
-        result: "No resource or params provided"
+        result: "No resource provided"
       })
     };
-    callback("No resource provided", response);
+    return response;
   }
 
   const environment = new Environment()
@@ -40,7 +40,7 @@ const handler: Handler = async (event: any, context: Context, callback: Callback
     body: JSON.stringify(result.data)
   };
 
-  callback(null, response)
+  return response;
 };
 
 export { handler }
