@@ -59,6 +59,7 @@ package:
     - '!node_modules/is-buffer/**'
     - '!node_modules/debug/**'
     - '!node_modules/ms/**'
+    - '!node_modules/blizzy-core/**'
 
 functions:
   service:
