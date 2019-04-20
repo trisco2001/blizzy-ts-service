@@ -18,3 +18,7 @@ getToken().then(tokenResponse => {
     });
 });
 
+let test = { a: "1", b: 2 }
+let value = test['a']
+console.log(value)
+
